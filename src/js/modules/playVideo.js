@@ -19,9 +19,16 @@ export default class VideoPlayer {
     }
 
     bindCloseBtn() {
-        this.close.addEventListener('click', () => {
+        this.close.addEventListener('click', (e) => {
             this.overlay.style.display = 'none';
             this.player.pauseVideo();
+        });
+
+        this.overlay.addEventListener('click', (e) => {
+            if (e.target === document.querySelector('.overlay')) {
+                this.overlay.style.display = 'none';
+                this.player.pauseVideo();
+            }
         });
     }
 
